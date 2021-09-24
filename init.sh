@@ -55,7 +55,7 @@ mkdir /home/$username
 mount /dev/xvdb /home/$username
 
 # add user
-useradd -u $userid -d /home/$username -s /bin/bash $username
+useradd -U $userid -d /home/$username -s /bin/bash $username
 gpasswd -a $username sudo
 cp -arpf /home/ubuntu/.ssh/authorized_keys /home/$username/.ssh/authorized_keys
 chown $username /home/$username
@@ -137,5 +137,4 @@ apt install -y tree
 # git config --global core.editor 'vim -c "set fenc=utf-8"'
 
 cd /
-userdel -r ubuntu
 
