@@ -45,7 +45,7 @@ aws ec2 wait volume-in-use --volume-ids vol-$volume_id
 #     sleep 1
 #     device=$(nvme list | grep $volume_id | awk '{print $1}' | xargs)
 # done
-sleep 5
+sleep 30
 # until [ -e $device ]; do
 #     sleep 1
 # done
