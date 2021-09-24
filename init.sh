@@ -24,7 +24,9 @@ sed -i 's/ap-northeast-1\.ec2\.//g' /etc/apt/sources.list
 apt update
 apt install nvme-cli
 apt install -y unzip
-apt install -y python
+# apt install -y python
+apt install python3-pip
+pip3 install awscli --upgrade --user
 # DEBIAN_FRONTEND=noninteractive dpkg --configure -a --force-confdef --force-confnew
 # apt install -y python3-pip
 # pip3 install awscli
