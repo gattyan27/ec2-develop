@@ -27,6 +27,7 @@ apt install -y unzip
 # apt install -y python
 apt install -y python3-pip
 pip3 install awscli --upgrade --user
+apt install -y awscli
 # DEBIAN_FRONTEND=noninteractive dpkg --configure -a --force-confdef --force-confnew
 # apt install -y python3-pip
 # pip3 install awscli
