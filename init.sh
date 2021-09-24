@@ -50,7 +50,7 @@ done
 #     sleep 1
 # done
 mkdir /home/$username
-# mkfs -t ext4 $device
+mkfs -t ext4 $device
 mount $device /home/$username
 # mount /dev/xvdb /home/$username
 
