@@ -55,8 +55,9 @@ mkdir /home/$username
 mount /dev/xvdb /home/$username
 
 # add user
-useradd -U $userid -d /home/$username -s /bin/bash $username
+useradd -d /home/$username -s /bin/bash $username
 gpasswd -a $username sudo
+mkdir /home/$username/.ssh
 cp -arpf /home/ubuntu/.ssh/authorized_keys /home/$username/.ssh/authorized_keys
 chown $username /home/$username
 chgrp $username /home/$username
@@ -85,7 +86,7 @@ apt update
 apt install -y yarn
 npm install -g npx
 npm install -g typescript typescript-language-server
-yarn global add create-react-app
+# yarn global add create-react-app
 
 # install docker
 sudo apt install -y \
@@ -133,6 +134,8 @@ apt install -y certbot python-certbot-nginx
 apt install -y neovim
 apt install -y jq
 apt install -y tree
+
+certbot --nginx -d jadev.link --non-interactive --agree-tos -m gattyan0328@gmail.com
 
 # git config --global core.editor 'vim -c "set fenc=utf-8"'
 
