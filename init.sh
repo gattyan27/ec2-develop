@@ -38,7 +38,7 @@ if ! test -e /usr/bin/aws ; then
 fi
 
 # mount ebs volume
-aws ec2 attach-volume --volume-id vol-$volume_id --instance-id $instance_id --device /dev/xvdb --region $region
+aws ec2 attach-volume --volume-id vol-$volume_id --instance-id $instance_id --device /dev/sda1 --region $region
 aws ec2 wait volume-in-use --volume-ids vol-$volume_id
 device=$(nvme list | grep $volume_id | awk '{print $1}' | xargs)
 while [ -z $device ]; do
