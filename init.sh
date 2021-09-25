@@ -60,8 +60,8 @@ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,ret
 # add user
 useradd -d /home/$username -s /bin/bash $username
 gpasswd -a $username sudo
-mkdir /home/$username/.ssh
-cp -arpf /home/ubuntu/.ssh/authorized_keys /home/$username/.ssh/authorized_keys
+# mkdir /home/$username/.ssh
+# cp -arpf /home/ubuntu/.ssh/authorized_keys /home/$username/.ssh/authorized_keys
 chown $username /home/$username
 chgrp $username /home/$username
 chown -R $username /home/$username/.ssh
