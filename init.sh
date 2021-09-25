@@ -38,20 +38,23 @@ if ! test -e /usr/bin/aws ; then
 fi
 
 # mount ebs volume
-aws ec2 attach-volume --volume-id vol-$volume_id --instance-id $instance_id --device /dev/xvdb --region $region
-aws ec2 wait volume-in-use --volume-ids vol-$volume_id
-device=$(nvme list | grep $volume_id | awk '{print $1}' | xargs)
-while [ -z $device ]; do
-    sleep 1
-    device=$(nvme list | grep $volume_id | awk '{print $1}' | xargs)
-done
+# aws ec2 attach-volume --volume-id vol-$volume_id --instance-id $instance_id --device /dev/xvdb --region $region
+# aws ec2 wait volume-in-use --volume-ids vol-$volume_id
+# device=$(nvme list | grep $volume_id | awk '{print $1}' | xargs)
+# while [ -z $device ]; do
+#     sleep 1
+#     device=$(nvme list | grep $volume_id | awk '{print $1}' | xargs)
+# done
 # sleep 30
 # until [ -e $device ]; do
 #     sleep 1
 # done
 mkdir /home/$username
-mkfs -t ext4 $device
-mount $device /home/$username
+# mkfs -t ext4 $device
+# mount $device /home/$username
+sudo apt install -y nfs-common
+sudo apt install -y cifs-utils
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $volume_id.efs.ap-northeast-1.amazonaws.com:/ /home/$username
 # mount /dev/xvdb /home/$username
 
 # add user
