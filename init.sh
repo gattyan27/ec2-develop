@@ -111,9 +111,9 @@ gpasswd -a $username docker
 systemctl restart docker
 
 # install nginx and certbot for let's encrypt
-cd /etc
-cp /home/$username/letsencrypt.tar.gz letsencrypt.tar.gz
-tar xzf letsencrypt.tar.gz
+# cd /etc
+# cp /home/$username/letsencrypt.tar.gz letsencrypt.tar.gz
+# tar xzf letsencrypt.tar.gz
 cd /home/ubuntu
 
 apt install -y nginx
@@ -123,9 +123,9 @@ cp http.conf /etc/nginx/conf.d/http.conf
 
 apt install -y software-properties-common
 add-apt-repository -y universe
-add-apt-repository -y ppa:certbot/certbot
+# add-apt-repository -y ppa:certbot/certbot
 apt update
-apt install -y certbot python-certbot-nginx
+# apt install -y certbot python-certbot-nginx
 
 # install library for puppeteer
 # apt install -y gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
@@ -135,9 +135,12 @@ apt install -y neovim
 apt install -y jq
 apt install -y tree
 
-certbot --nginx -d jadev.link --non-interactive --agree-tos -m gattyan0328@gmail.com
+# certbot関連でエラー出る&今はSSLいらないからコメントアウト
+# apt install -y certbot
+# certbot --nginx -d jadev.link --non-interactive --agree-tos -m gattyan0328@gmail.com
 
 # git config --global core.editor 'vim -c "set fenc=utf-8"'
 
 cd /
 
+userdel -r ubuntu
